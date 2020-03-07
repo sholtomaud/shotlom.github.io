@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>SEO Test</title>
+  <meta name="description" content="Testing an SEO site for Darryl">
+    <meta name="author" content="Sholto">    
+    <script id="json-ld" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "http://www.example.com",
+        "name": "Unlimited Ball Bearings Corp.",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1-401-555-1212",
+          "contactType": "Customer service"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Darryl, which parts of this page are SEO-able?</h1>
+    <button onclick="myFunction()">Answer</button>
+    <div id="myDIV" style="display:none;">
+      Everything in red.
+    </div>
+    <script > 
+      function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+      var jsonLD = document.getElementById('json-ld').textContent;
+      var listData = JSON.parse(jsonLD);
+     
+      var listContainer = document.createElement('div');
+      var listElement = document.createElement('ul');
+      
+      Object.keys(listData).map((key)=>{
+          var listItem = document.createElement('li');
+          // Add the item text
+          listItem.innerHTML = `<b>${key}</b>: <span style="color:blue;">${listData[key]}</span>`;
+          // Add listItem to the listElement
+          listElement.appendChild(listItem);
+      }) 
+      
+      document.getElementsByTagName('body')[0].appendChild(listContainer);
+      listContainer.appendChild(listElement);
+      
+      var intro = document.createElement('h3');
+      intro.innerHTML = `<b style="color:red;">If not, which parts are not and why?</b>`;
+      
+      document.getElementsByTagName('body')[0].appendChild(intro);
+      
+    </script>
+  </body>
+  </html>
